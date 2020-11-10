@@ -1,0 +1,35 @@
+account:
+  kvRef: my-kv
+  server: https://acme-v02.api.letsencrypt.org/directory
+  secretName: my-example
+
+certificates:
+  - name: wildcard-example-com
+    kvRef: my-kv
+    zoneRef: example.com
+    domains:
+      - *.example.com
+
+keyvaults:
+  - ref: my-kv
+    resource:
+      subscription: guid
+      resourceGroup: myrg
+      resourceName: name
+
+  - ref: my-kv
+    resource:
+      resourceId: <resource id>
+
+dnsZones:
+  - ref: example.com
+    provider: azure
+    resource:
+      subscription: guid
+      resourceGroup: myrg
+      resourceName: name
+
+  - ref: otherexample.com
+    provider: azure
+    resource:
+      resourceId: <resource id>
